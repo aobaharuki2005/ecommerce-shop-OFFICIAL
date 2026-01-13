@@ -32,10 +32,10 @@ updates:
       #     - "*"
     
     # Tùy chỉnh commit message
-    commit-message:
-      prefix: "root"
-      prefix-development: "root(dev)"
-      include: "scope"
+    # commit-message:
+    #   prefix: "root"
+    #   prefix-development: "root(dev)"
+    #   include: "scope"
     
     labels:
       - "root-side"
@@ -75,10 +75,10 @@ updates:
       #   patterns:
       #     - "*"
     
-    commit-message:
-      prefix: "server"
-      prefix-development: "server(dev)"
-      include: "scope"
+    # commit-message:
+    #   prefix: "server"
+    #   prefix-development: "server(dev)"
+    #   include: "scope"
     
     labels:
       - "server-side"
