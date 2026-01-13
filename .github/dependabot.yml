@@ -3,6 +3,7 @@ updates:
   # Cấu hình cho NPM (root folder)
   - package-ecosystem: "npm"
     directory: "/"
+    target-branch: "develop"
     schedule:
       interval: "daily"
     allow:
@@ -35,6 +36,7 @@ updates:
   # Cấu hình cho NPM (server folder)
   - package-ecosystem: "npm"
     directory: "/server"
+    target-branch: "develop"
     schedule:
       interval: "daily"
     allow:
