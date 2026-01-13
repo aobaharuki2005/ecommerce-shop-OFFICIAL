@@ -21,21 +21,8 @@ updates:
       
       root-major: # Tên nhóm unique cho root
         applies-to: version-updates
-        # patterns:
-        #   - "*"
         update-types:
           - "major"
-      
-      # root-security: # Nhóm riêng cho security updates
-      #   applies-to: security-updates
-      #   patterns:
-      #     - "*"
-    
-    # Tùy chỉnh commit message
-    # commit-message:
-    #   prefix: "root"
-    #   prefix-development: "root(dev)"
-    #   include: "scope"
     
     labels:
       - "root-side"
@@ -65,20 +52,8 @@ updates:
       
       server-major: # Tên nhóm unique cho server
         applies-to: version-updates
-        # patterns:
-        #   - "*"
         update-types:
           - "major"
-      
-      # server-security: # Nhóm riêng cho security updates
-      #   applies-to: security-updates
-      #   patterns:
-      #     - "*"
-    
-    # commit-message:
-    #   prefix: "server"
-    #   prefix-development: "server(dev)"
-    #   include: "scope"
     
     labels:
       - "server-side"
