@@ -1,70 +1,88 @@
-
 version: 2
 updates:
   # Cấu hình cho NPM (root folder)
-  - package-ecosystem: "npm" # Dự án NodeJS/NextJS
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
-
-    # Cho phép tất cả loại phụ thuộc
     allow:
       - dependency-type: "all"
-
-    # Giới hạn số PR được mở lên là 20
-    open-pull-requests-limit: 20
-    # Gom nhóm các bản cập nhật thường và bảo mật:
+    open-pull-requests-limit: 10 # Giảm từ 20 xuống 10 (đủ cho 2 nhóm update)
+    
+    # Gom nhóm các bản cập nhật
     groups:
-      minor-and-patch-updates: # Nhóm 1: Chỉ các bản cập nhật Minor và Patch
+      root-minor-and-patch: # Tên nhóm unique cho root
         applies-to: version-updates
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
-        
-      major-updates: # Nhóm 2: Chỉ các bản cập nhật Major
+      
+      root-major: # Tên nhóm unique cho root
         applies-to: version-updates
         patterns:
           - "*"
         update-types:
           - "major"
-    # Gán nhãn rõ ràng cho ecosystem
+      
+      root-security: # Nhóm riêng cho security updates
+        applies-to: security-updates
+        patterns:
+          - "*"
+    
+    # Tùy chỉnh commit message
+    commit-message:
+      prefix: "root"
+      prefix-development: "root(dev)"
+      include: "scope"
+    
     labels:
       - "root-side"
       - "dependencies"
       - "automated-pr"
+    
+    # Tự động rebase khi có conflict
+    rebase-strategy: "auto"
 
   # Cấu hình cho NPM (server folder)
-  - package-ecosystem: "npm" # Dự án NodeJS/NextJS
+  - package-ecosystem: "npm"
     directory: "/server"
     schedule:
       interval: "daily"
-
-    # Cho phép tất cả loại phụ thuộc
     allow:
       - dependency-type: "all"
-
-    # Giới hạn số PR được mở lên là 20
-    open-pull-requests-limit: 20
+    open-pull-requests-limit: 10
+    
     groups:
-      minor-and-patch-updates: # Nhóm 1: Chỉ các bản cập nhật Minor và Patch
+      server-minor-and-patch: # Tên nhóm unique cho server
         applies-to: version-updates
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
-        
-      major-updates: # Nhóm 2: Chỉ các bản cập nhật Major
+      
+      server-major: # Tên nhóm unique cho server
         applies-to: version-updates
         patterns:
           - "*"
         update-types:
           - "major"
-    # Gán nhãn rõ ràng cho ecosystem
+      
+      server-security: # Nhóm riêng cho security updates
+        applies-to: security-updates
+        patterns:
+          - "*"
+    
+    commit-message:
+      prefix: "server"
+      prefix-development: "server(dev)"
+      include: "scope"
+    
     labels:
       - "server-side"
       - "dependencies"
       - "automated-pr"
     
+    rebase-strategy: "auto"
